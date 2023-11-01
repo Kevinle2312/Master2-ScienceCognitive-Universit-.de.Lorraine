@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container p-5 my-5 border">
+
+        <h1 style="text-align:center">Welcome to the Pokedex</h1>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <form action="/pokemon" method="POST">
+                    <div class="mb-3 mt-3">
+                        <label for="index" class="form-label">Pokemon by Index:</label>
+                        <input type="number" class="form-control" id="index" placeholder="Enter pokemon index"
+                               name="index" value="1">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <form action="/pokemon/type" method="GET">
+                    <select name="pokemontype" class="form-select mt-3">
+                        {% for t in data['pokemontypes'] %}
+                            <option>{{ t }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
